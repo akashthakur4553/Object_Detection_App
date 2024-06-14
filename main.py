@@ -201,8 +201,4 @@ if st.checkbox("Show the detected labels", value=True):
             result = result_queue.get()
             labels_placeholder.table(result)
 
-st.markdown(
-    "This demo uses a model and code from "
-    "https://github.com/robmarkcole/object-detection-app. "
-    "Many thanks to the project."
-)
+
