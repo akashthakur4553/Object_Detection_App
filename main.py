@@ -3,7 +3,7 @@ import queue
 from pathlib import Path
 from typing import List, NamedTuple
 import urllib.request
-
+import os
 import av
 import cv2
 import numpy as np
@@ -100,8 +100,12 @@ def download_file(url, download_to: Path, expected_size=None):
 
 def get_ice_servers():
     try:
-        account_sid = "AC33632aa93a8aef5cdd18973197a2be57"
-        auth_token = "92f4b7a9f67664cffe9a1d037bca32f1"
+        account_sid = account_sid = os.getenv(
+            "TWILIO_ACCOUNT_SID"
+        )
+        auth_token =os.getenv(
+            "TWILIO_AUTH_TOKEN"
+        )
     except KeyError:
         logger.warning(
             "Twilio credentials are not set. Fallback to a free STUN server from Google."
